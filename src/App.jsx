@@ -1,0 +1,30 @@
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { AppLayout } from "./components/AppLayout";
+import { TaskList } from "./components/TaskList";
+import { TrashedtaskList } from "./components/TrashedTaskList";
+
+const router = createBrowserRouter([
+  {
+    element: (
+      <AppLayout>
+        <Outlet />
+      </AppLayout>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <TaskList />,
+      },
+      {
+        path: "/trash",
+        element: <TrashedtaskList />
+      }
+    ]
+  }
+]);
+
+const App =() => {
+  return <RouterProvider router={router} />
+}
+
+export default App;
